@@ -7,4 +7,9 @@ defmodule Quotes.Subscriber do
 
     timestamps()
   end
+
+  def changeset(struct, params \\ %{}) do
+    struct
+    |> cast(params, [:first_name, :last_name])
+  end
 end

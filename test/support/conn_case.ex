@@ -25,6 +25,8 @@ defmodule Quotes.ConnCase do
       import Ecto.Changeset
       import Ecto.Query
 
+      import Quotes.Factory
+
       import Quotes.Router.Helpers
 
       # The default endpoint for testing
