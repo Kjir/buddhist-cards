@@ -20,7 +20,9 @@ defmodule Quotes.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", Quotes do
-  #   pipe_through :api
-  # end
+  scope "/api/v1", Quotes do
+    pipe_through :api
+
+    resources "/subscribers", SubscriberController
+  end
 end

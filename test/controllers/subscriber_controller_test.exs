@@ -1,5 +1,6 @@
 defmodule Quotes.SubscriberControllerTest do
   use Quotes.ConnCase
+  import Quotes.Factory
 
   test "#index renders a list of subscribers" do
     conn = build_conn()
@@ -11,8 +12,8 @@ defmodule Quotes.SubscriberControllerTest do
       "subscribers" => [%{
         "first_name" => subscriber.first_name,
         "last_name" => subscriber.last_name,
-        "inserted_at" => Ecto.DateTime.to_iso8601(todo.inserted_at),
-        "updated_at" => Ecto.DateTime.to_iso8601(todo.updated_at)
+        "inserted_at" => NaiveDateTime.to_iso8601(subscriber.inserted_at),
+        "updated_at" => NaiveDateTime.to_iso8601(subscriber.updated_at)
       }]
     }
   end

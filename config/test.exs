@@ -12,7 +12,7 @@ config :logger, level: :warn
 # Configure your database
 config :quotes, Quotes.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
+  username: "sb",
   password: "postgres",
   database: "quotes_test",
   hostname: "localhost",
