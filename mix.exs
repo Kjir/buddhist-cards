@@ -23,6 +23,7 @@ defmodule Quotes.Mixfile do
   end
 
   # Specifies which paths to compile per environment.
+  defp elixirc_paths(:travis), do: ["lib", "web", "test/support"]
   defp elixirc_paths(:test), do: ["lib", "web", "test/support"]
   defp elixirc_paths(_),     do: ["lib", "web"]
 
@@ -38,7 +39,9 @@ defmodule Quotes.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
-     {:ex_machina, "~> 1.0", only: :test}]
+     {:ex_machina, "~> 1.0", only: [:test, :travis]},
+     {:credo, "~> 0.5.3", only: [:dev, :travis]},
+     {:dogma, "~> 0.1.13", only: [:dev, :travis]}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
