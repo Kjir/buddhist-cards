@@ -1,7 +1,13 @@
 defmodule Quotes.SubscriberController do
   use Quotes.Web, :controller
+  use PhoenixSwagger
 
   alias Quotes.Subscriber
+
+  swagger_model :index do
+    description "Get the list of subscribers"
+    responses 200, "The array of subscribers"
+  end
 
   def index(conn, _params) do
     subscribers = Repo.all(Subscriber)
