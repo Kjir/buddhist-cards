@@ -13,8 +13,8 @@ before_script:
   - gem install pronto-credo
 script:
   - if [ $PULL_REQUEST_ID != false ]; then pronto run -f github_pr github_status; fi
-  - mix test
   - mix dogma || true
+  - mix test
 deploy:
   provider: heroku
   api_key:
