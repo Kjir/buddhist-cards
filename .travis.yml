@@ -6,7 +6,7 @@ addons:
   postgresql: '9.4'
 env:
   global:
-    - MIX_ENV=test
+    - MIX_ENV=travis
     - PULL_REQUEST_ID=$TRAVIS_PULL_REQUEST
 before_script:
   - rvm install ruby-2.3.1
