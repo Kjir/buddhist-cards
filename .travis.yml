@@ -15,3 +15,14 @@ script:
   - if [ $PULL_REQUEST_ID != false ]; then pronto run -f github_pr github_status; fi
   - mix test
   - mix dogma || true
+deploy:
+  provider: heroku
+  api_key:
+    secure: oyaB4ieDLjOfDUHlTRr6NU+ocV0Zb9Mo0lkrkUJks5D1SOfo+t1voqjWW6DKQKsNUaC/VI32r+CrOCXHwyY1Z3oPA63HiD6gNV60SyOOQl/DdxMDrNCeF2yEIUcMc8JtO25edCIQVpbqCtMLwrlxQS/uMgIy7fPB5dUePw7ywoGeYhJo928bLZqtFoojdQin+osV76I5dbCZcuMdvIlb7sQWqDnLGM4voeEQh1i7Ajrs/LSw+Zx5n3KO4nFr1nDkk+WMWyoJGxGw1qMDzGVskMMK4b8NiM9OBNWwYT9heP/OIEY3Y5p32bnhhCyzTKlmsVolv7D+AlJSfvb4RkcVtnviXS+0oCHcuh4I7gStvMBb8C2MVFwUvVxLquGGUBF0dcYTJPTCNUViSS5XYVZyWEBBG7mBquwhHh+1fWj43bCWuuRIHsdzfCteiCwB/Gx9A9Uj5hB8CR5HFr4gewVhest2kh2nrswA+rZFgzUMRZOCwa3/I6gcQHkZDvB6YcFZn5vmY7eUU2T7+2utu9JyHvsF1L/8BfTlo1/VZOnG0rROHwM6gbtb4ABkaF+9C8cQiKerlbTCfMh44dPzWymUGEnNi+Gk8dR6N394hkeefkS3wwZh6P3uRjmVihPpRq8MyCYwXDYXyyb3mPxeiIBennVMi+WXWBicdZ1TUizCesU=
+  app:
+    develop: buddhist-quotes-dev
+    master: buddhist-quotes
+  run:
+    - mix ecto.migrate
+  on:
+    repo: Kjir/buddhist-cards
