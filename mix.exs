@@ -47,7 +47,9 @@ defmodule Quotes.Mixfile do
      {:ex_machina, "~> 1.0", only: [:test, :travis]},
      {:credo, "~> 0.5.3", only: [:dev, :travis]},
      {:dogma, "~> 0.1.13", only: [:dev, :travis]},
-     {:excoveralls, "~> 0.5", only: [:test, :travis]}]
+     {:excoveralls, "~> 0.5", only: [:test, :travis]},
+     {:phoenix_slime, "~> 0.8.0"}
+   ]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
