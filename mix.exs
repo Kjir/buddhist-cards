@@ -10,7 +10,11 @@ defmodule Quotes.Mixfile do
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      aliases: aliases(),
-     deps: deps()]
+     deps: deps(),
+     test_coverage: [tool: ExCoveralls],
+     preferred_cli_env: ["coveralls": :test, "coveralls.detail": :test,
+                         "coveralls.post": :test, "coveralls.html": :test]
+                      ]
   end
 
   # Configuration for the OTP application.
@@ -18,8 +22,8 @@ defmodule Quotes.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {Quotes, []},
-     applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex]]
+     applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger,
+                    :gettext, :phoenix_ecto, :postgrex]]
   end
 
   # Specifies which paths to compile per environment.
@@ -42,7 +46,10 @@ defmodule Quotes.Mixfile do
      {:cowboy, "~> 1.0"},
      {:ex_machina, "~> 1.0", only: [:test, :travis]},
      {:credo, "~> 0.5.3", only: [:dev, :travis]},
-     {:dogma, "~> 0.1.13", only: [:dev, :travis]}]
+     {:dogma, "~> 0.1.13", only: [:dev, :travis]},
+     {:excoveralls, "~> 0.5", only: [:test, :travis]},
+     {:phoenix_slime, "~> 0.8.0"}
+   ]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
@@ -54,7 +61,7 @@ defmodule Quotes.Mixfile do
   defp aliases do
     ["ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
      "ecto.reset": ["ecto.drop", "ecto.setup"],
-     "test": ["ecto.create --quiet", "ecto.migrate", "test"]]
+     "test": ["ecto.create --quiet", "ecto.migrate", "test --cover"]]
   end
 
   # This is the configuration for the swagger documentation
