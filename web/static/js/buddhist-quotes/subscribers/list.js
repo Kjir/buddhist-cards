@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { Table } from "react-bootstrap";
-import SubscribersControls from "./subscribers-controls";
+import SubscribersControls from "./controls";
 
 function SubscribersList(props) {
   return (

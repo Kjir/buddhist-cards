@@ -12,6 +12,9 @@
 // If you no longer want to use a dependency, remember
 // to also remove its path from "config.paths.watched".
 import "phoenix_html"
+import React from "react"
+import ReactDOM from "react-dom"
+import { hashHistory, IndexRoute, Route, Router } from "react-router"
 
 // Import local files
 //
@@ -19,13 +22,19 @@ import "phoenix_html"
 // paths "./socket" or full ones "web/static/js/socket".
 
 // import socket from "./socket"
-import React from "react"
-import ReactDOM from "react-dom"
 import App from "./buddhist-quotes"
+import NewSubscriber from "./buddhist-quotes/subscribers/new"
+import SubscribersList from "./buddhist-quotes/subscribers/list"
 
 ReactDOM.render(
   <div>
-    <App/>
+    <Router history={hashHistory}>
+      <Route path="/" component={App}>
+        <IndexRoute component={SubscribersList} />
+        <Route path="/subscribers" component={SubscribersList} />
+        <Route path="/subscribers/new" component={NewSubscriber} />
+      </Route>
+    </Router>
   </div>,
   document.getElementById("buddhist-quotes")
 )
