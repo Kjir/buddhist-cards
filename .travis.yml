@@ -9,17 +9,17 @@ env:
     - MIX_ENV=travis
     - PULL_REQUEST_ID=$TRAVIS_PULL_REQUEST
 before_install:
-  - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-  - echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-  - apt-get update && apt-get install yarn
+  - nvm install 7
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
 before_script:
+  - $HOME/.yarn/bin/yarn
   - rvm install ruby-2.3.1
   - gem install pronto-credo
 script:
   - if [ $PULL_REQUEST_ID != false ]; then pronto run -f github_pr github_status; fi
   - mix dogma || true
   - mix test
-  - yarn test -- --coverage
+  - $HOME/.yarn/bin/yarn test -- --coverage
 deploy:
   provider: heroku
   api_key:
