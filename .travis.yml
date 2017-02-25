@@ -15,6 +15,7 @@ script:
   - if [ $PULL_REQUEST_ID != false ]; then pronto run -f github_pr github_status; fi
   - mix dogma || true
   - mix test
+  - yarn test -- --coverage
 deploy:
   provider: heroku
   api_key:
