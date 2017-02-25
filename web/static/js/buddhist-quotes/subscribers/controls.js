@@ -16,7 +16,7 @@ class SubscribersControls extends React.Component {
     return (<ButtonToolbar>
       <Button bsStyle="primary" onClick={this.handleAdd}>
         <Glyphicon glyph="plus" />
-        Add subscriber
+        Add Subscriber
       </Button>
     </ButtonToolbar>);
   }
